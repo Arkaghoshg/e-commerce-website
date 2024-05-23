@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Detail</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <body style="background-color: rgb(242, 245, 196);"></body>
+
+    <header>
+        <h1>Track Detail</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="track_detail.html">Track Detail</a></li>
+                <li><a href="payment.html">Payment</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section id="track-form-section" class="track-form">
+            <h2>Track Your Order</h2>
+            <p>Please enter your order ID to track your order:</p>
+            <form id="track-form">
+                <label for="order-id">Order ID:</label>
+                <input type="text" id="order-id" name="order-id" required>
+                <input type="submit" value="Track" class="btn">
+            </form>
+        </section>
+        
+        <section id="tracking-status-section" class="tracking-status" style="display: none;">
+            <h2>Order Status</h2>
+            <div id="status-details">
+                <p>Order ID: <span id="order-id-display"></span></p>
+                <p>Status: <span id="order-status"></span></p>
+            </div>
+            <p><a href="track_detail.html">Track Another Order</a></p>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 Online Shopping Portal</p>
+    </footer>
+
+    <script>
+        // Track form submission event
+        document.getElementById('track-form').addEventListener('submit', function(event) {
+            // Prevent default form submission
+            event.preventDefault();
+            
+            // Get the order ID entered by the user
+            var orderId = document.getElementById('order-id').value.trim();
+            
+            // Display tracking status section
+            document.getElementById('track-form-section').style.display = 'none';
+            document.getElementById('tracking-status-section').style.display = 'block';
+            
+            // Display order ID in the tracking status section
+            document.getElementById('order-id-display').textContent = orderId;
+            
+            // Call a function to fetch and display order status based on the order ID
+            fetchAndDisplayOrderStatus(orderId);
+        });
+
+        // Function to fetch and display order status
+        function fetchAndDisplayOrderStatus(orderId) {
+            // Placeholder function; you'll need to implement actual logic to fetch order status
+            // Here you can make an AJAX request to your server to get the order status based on the order ID
+            // Once you have the status, update the 'order-status' span with the retrieved status
+            var orderStatus = 'Processing'; // Example status; replace with actual fetched status
+            document.getElementById('order-status').textContent = orderStatus;
+        }
+    </script>
+</body>
+</html>

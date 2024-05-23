@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <body style="background-color: rgb(242, 245, 196);"></body>
+
+    <header>
+        <h1>Shopping Cart</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="track_detail.html">Track Detail</a></li>
+                <li><a href="payment.html">Payment</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="cart-items">
+            <h2>Shopping Cart</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody id="cart-items-body">
+                    <!-- Dynamically populated cart items will go here -->
+                </tbody>
+            </table>
+            
+            <div class="cart-total" id="cart-total">
+                <p>Total: $0.00</p>
+                <a href="payment.html" class="btn">Proceed to Payment</a>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 Online Shopping Portal</p>
+    </footer>
+    
+    <script>
+        // Function to add items to the cart
+        function addToCart(productName, price) {
+            // Check if the product already exists in the cart
+            var cartItems = document.querySelectorAll('#cart-items-body tr');
+            var found = false;
+            cartItems.forEach(function(item) {
+                if (item.cells[0].textContent === productName) {
+                    // If the product exists, increase its quantity and update total price
+                    var quantityCell = item.cells[2];
+                    var quantity = parseInt(quantityCell.textContent);
+                    quantityCell.textContent = quantity + 1;
+                    
+                    // Update total price for this item
+                    var totalPriceCell = item.cells[3];
+                    var totalPrice = parseFloat(totalPriceCell.textContent.substr(1)); // Remove '$' sign
+                    totalPrice += price;
+                    totalPriceCell.textContent = '$' + totalPrice.toFixed(2);
+                    
+                    // Update cart total
+                    updateCartTotal(price);
+                    
+                    found = true;
+                }
+            });
+            
+            // If the product is not already in the cart, add it as a new item
+            if (!found) {
+                var newRow = document.createElement('tr');
+                newRow.innerHTML = `
+                    <td>${productName}</td>
+                    <td>$${price.toFixed(2)}</td>
+                    <td>1</td>
+                    <td>$${price.toFixed(2)}</td>
+                `;
+                document.getElementById('cart-items-body').appendChild(newRow);
+                
+                // Update cart total
+                updateCartTotal(price);
+            }
+        }
+        
+        // Function to update the cart total
+        function updateCartTotal(price) {
+            var cartTotalElement = document.getElementById('cart-total').querySelector('p');
+            var currentTotal = parseFloat(cartTotalElement.textContent.split('$')[1]);
+            var newTotal = currentTotal + price;
+            cartTotalElement.textContent = `Total: $${newTotal.toFixed(2)}`;
+        }
+        
+        // Example: Add event listener for "Add to Cart" button click
+        var addToCartButton = document.getElementById('add-to-cart-button');
+        addToCartButton.addEventListener('click', function() {
+            // Get product details
+            var productName = 'iPhone'; // Replace with product name
+            var price = 68000.78; // Replace with product price
+            
+            // Add product to cart
+            addToCart(productName, price);
+        });
+    </script>
+</body>
+</html>

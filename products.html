@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* CSS for setting image size */
+        .product-list img {
+            width: 200px; /* Set the width of the image */
+            height: auto; /* Maintain aspect ratio */
+        }
+    </style>
+</head>
+<body>
+    <body style="background-color: rgb(242, 245, 196);"></body>
+
+    <header>
+        
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="track_detail.html">Track Detail</a></li>
+                <li><a href="payment.html">Payment</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="product-list">
+            <h2>Products</h2>
+            <ul>
+                <div class="product">
+                <li>
+                    <img src="iphone 15 pro.jpg" alt="iPhone">
+                    <h3>iPhone</h3>
+                    <p>$68000.78</p>
+                    <p>High quality phone</p>
+                    <button onclick="addToCart('iPhone', 68000.78)">Add to Cart</button>
+                </li>
+                </div>
+                <li>
+                    <img src="washing machine.jpg" alt="iPhone">
+                    <h3>Washing Machine</h3>
+                    <p>$65000.78</p>
+                    <p>Powerful washing within 10 mins</p>
+                    <button>Add to Cart</button>
+                </li>
+                <li>
+                    <img src= "dell-laptop-price.jpg" alt="iPhone">
+                    <h3>dell laptop</h3>
+                    <p>$4000.68</p>
+                    <p>Suitable for office work</p>
+                    <button>Add to Cart</button>
+                </li>
+                <li>
+                    <img src="crompton fan.png"iPhone">
+                    <h3>crompton fan</h3>
+                    <p>$25000</p>
+                    <p>cool air</p>
+                    <button>Add to Cart</button>
+                </li>
+                <li>
+                    <img src="view sonic.jpg" alt="iPhone">
+                    <h3>viewsonic</h3>
+                    <p>$15000.65</p>
+                    <p>good visibility</p>
+                    <button>Add to Cart</button>
+                </li>
+                <!-- Add other products here -->
+            </ul>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 Online Shopping Portal</p>
+    </footer>
+</body>
+</html>
